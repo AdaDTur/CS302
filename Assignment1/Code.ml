@@ -28,10 +28,11 @@ let distance (x1, y1) (x2, y2) =
 let binomial_tests = [
   (* Your test cases go here. Correct the incorrect test cases for the function. *)
   ((0, 0), 1);
-  ((1, 2), 0);
-  ((-4, 0), 1);
-  ((0, 0), 1);
-
+  ((2, 1), 2);
+  ((1, 0), 1);
+  ((5, 2), 10);
+  ((10, 4), 210);
+  
 ]
 
 (* TODO: Correct this implementation so that it compiles and returns
@@ -41,7 +42,7 @@ let rec factorial num =
   if num <= 1 then 1 else factorial (num-1) * num
     
 let binomial n k =
-  (factorial n) / ((factorial k) * (factorial (n - k)))
+  (factorial n) / ((factorial k) * (factorial (n-k)))
 
 (* Question 3: Lucas Numbers *)
 
