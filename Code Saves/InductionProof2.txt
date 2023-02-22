@@ -1,0 +1,26 @@
+let rec sum l = match l with
+  | [] -> 0
+  | x :: xs -> x + sum xs
+
+let rec sum_tr l acc = matcch l with
+  | [] -> acc
+  | x :: xs -> sum xs (x + acc)
+
+THEOREM. (sum and sum_tr are equivalent)
+  For any l : int list, we have:
+    sum l = sum_tr l 0
+    
+PROOF. By induction l
+  CASE l = []. This will work.
+  
+  CASE l = x :: xs
+    WTS. sum (x :: xs) = sum_tr (x :: xs) 0
+    IH. sum xs = sum_tr xs 0
+    
+    LHS. sum (x :: xs)          -- by sum
+          = x + sum xs          -- by IH
+          = x + sum_tr xs 0
+          
+    RHS. sum_tr (x :: xs) 0
+          = sum_tr xs (0 + x)   -- by def sum
+          = sum_tr xs x         -- by common sense
