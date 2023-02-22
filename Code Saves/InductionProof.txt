@@ -1,0 +1,29 @@
+THEOREM. (Map distribution over append)
+For any l1, l2 : 'a list and any f : 'a -> 'b, we have:
+  app (map f l1_ map (f l2) = map f (app l1 l2)
+  
+PROOF. 
+
+CASE. l1 = []
+  WTS. app (map f []) (map f l2) = map f (app [] l2)
+  
+  LHS. app (map f []) (map f l2)
+        = app [] (map f l2)                   -- by map
+        = map f l2                            -- by app
+        
+  RHS. map f (app [] l2)
+        = map f l2                            -- by app
+        
+CASE. l1 = x :: xs
+  WTS. app (map f x :: xs) (map f l2) = map f (app x :: xs l2)
+  IH. app (map f xs) (map f l2) = map f (app xs l2)
+  
+  LHS. app (map f (x :: xs)) (map f l2)
+        = app (f x :: map f xs) (map f l2)    -- by app
+        = f x :: a[[ (map f xs) (map f l2)
+        = f x :: map f (app xs l2)            -- by IH
+        
+  RHS. map f (app (x :: xs) l2)
+        = map f (x :: app xs l2)              -- by app
+        = f x :: map f (app xs l2)            -- by map
+        = LHS
